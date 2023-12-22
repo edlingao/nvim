@@ -46,8 +46,9 @@ return require('packer').startup(function(use)
 	lazy=false,
   }
 
-  use('nvim-tree/nvim-tree.lua')
-  use('nvim-tree/nvim-web-devicons')
-  use('github/copilot.vim')
-
+  use('nvim-tree/nvim-tree.lua');
+  use('nvim-tree/nvim-web-devicons');
+  use('github/copilot.vim');
+  use('mhinz/vim-signify');
+  use('tpope/vim-surround');
 end)
