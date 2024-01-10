@@ -8,3 +8,7 @@ vim.o.smartindent = true
 vim.keymap.set("n", "<leader>pv", ":ex<cr>")
 -- vim.keymap.set("n", "C-h", ":ex<cr>")
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>")
+
+-- Set relative numbers on by default
+vim.cmd("set relativenumber")
+
