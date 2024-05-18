@@ -1,5 +1,12 @@
 local lsp_zero = require('lsp-zero')
 
+-- Setup the default keymaps
+-- This will setup the default keymaps for the current buffer
+
+
+vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.diagnostic.open_float()<CR>', {})
+
+
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
@@ -7,9 +14,41 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = {'rust_analyzer', 'lua_ls', 'tsserver', 'eslint', 'emmet_ls', 'haxe_language_server'},
+
+local mason_lspconfig = require('mason-lspconfig')
+
+local on_attach = function(_, bufnr)
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+    vim.lsp.buf.format({
+      bufnr = bufnr,
+      filter = function(client)
+    	  return client.name == "null-ls"
+      end
+    })
+    print("File formatted")
+  end, { desc = 'Format current buffer with LSP' })
+end
+
+mason_lspconfig.setup({
+  ensure_installed = {
+    'rust_analyzer',
+    'lua_ls',
+    'tsserver',
+    'eslint',
+    'emmet_ls',
+    'haxe_language_server',
+    'tailwindcss',
+  },
   handlers = {
     lsp_zero.default_setup,
   },
-})
+});
+
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    require('lspconfig')[server_name].setup {
+      on_attach = on_attach,
+    }
+  end,
+}
+
