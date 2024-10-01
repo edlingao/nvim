@@ -38,6 +38,9 @@ mason_lspconfig.setup({
     'emmet_ls',
     'haxe_language_server',
     'tailwindcss',
+    'html',
+    'denols',
+    'gopls',
   },
   handlers = {
     lsp_zero.default_setup,
@@ -50,5 +53,12 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
     }
   end,
+}
+
+
+local nvim_lsp = require('lspconfig')
+nvim_lsp.denols.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
 }
 
