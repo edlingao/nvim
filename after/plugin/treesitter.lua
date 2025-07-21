@@ -12,6 +12,7 @@ require'nvim-treesitter.configs'.setup {
     "vimdoc",
     "query",
     "html",
+    "templ",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -34,4 +35,7 @@ require'nvim-treesitter.configs'.setup {
 
 vim.treesitter.language.register("html", "ejs")
 vim.treesitter.language.register("javascript", "ejs")
+vim.filetype.add({ extension = { templ = "templ" } })
+
+vim.api.nvim_create_autocmd("BufEnter", { pattern = "*.templ", callback = function() vim.cmd("TSBufEnable highlight") end }) 
 

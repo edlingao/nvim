@@ -51,8 +51,7 @@ return require('packer').startup(function(use)
   use('github/copilot.vim');
   use('mhinz/vim-signify');
   use('tpope/vim-surround');
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = 'nvim-lua/plenary.nvim'
-  })
+  use('darrikonn/vim-gofmt')
+  use('luckasRanarison/tailwind-tools.nvim')
+  use('mfussenegger/nvim-lint')
 end)
