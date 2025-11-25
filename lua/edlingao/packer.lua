@@ -15,6 +15,14 @@ return require('packer').startup(function(use)
   	"catppuccin/nvim",
 	as = "catppuccin",
 	config = function()
+		require("catppuccin").setup({
+			integrations = {
+				treesitter = true,
+				native_lsp = {
+					enabled = true,
+				},
+			},
+		})
 		vim.cmd('colorscheme catppuccin')
 	end
   }
@@ -54,4 +62,15 @@ return require('packer').startup(function(use)
   use('darrikonn/vim-gofmt')
   use('luckasRanarison/tailwind-tools.nvim')
   use('mfussenegger/nvim-lint')
+  -- In your Packer config
+  use {
+    'Ripple-TS/ripple',
+    rtp = 'packages/nvim-plugin',  -- This tells Packer to use the subdirectory
+    requires = {
+      'nvim-treesitter/nvim-treesitter'
+    },
+    config = function()
+      require('ripple').setup()
+    end
+  }
 end)

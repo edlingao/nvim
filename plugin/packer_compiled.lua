@@ -80,7 +80,7 @@ _G.packer_plugins = {
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   catppuccin = {
-    config = { "\27LJ\2\n:\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\27colorscheme catppuccin\bcmd\bvim\0" },
+    config = { "\27LJ\2\nË\1\0\0\5\0\v\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\2B\0\2\0016\0\b\0009\0\t\0'\2\n\0B\0\2\1K\0\1\0\27colorscheme catppuccin\bcmd\bvim\17integrations\1\0\1\17integrations\0\15native_lsp\1\0\1\fenabled\2\1\0\2\15treesitter\2\15native_lsp\0\nsetup\15catppuccin\frequire\0" },
     loaded = true,
     path = "/Users/edlingao/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
@@ -160,6 +160,12 @@ _G.packer_plugins = {
     path = "/Users/edlingao/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ripple = {
+    config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vripple\frequire\0" },
+    loaded = true,
+    path = "/Users/edlingao/.local/share/nvim/site/pack/packer/start/ripple/packages/nvim-plugin",
+    url = "https://github.com/Ripple-TS/ripple"
+  },
   ["tailwind-tools.nvim"] = {
     loaded = true,
     path = "/Users/edlingao/.local/share/nvim/site/pack/packer/start/tailwind-tools.nvim",
@@ -203,10 +209,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Runtimepath customization
+time([[Runtimepath customization]], true)
+vim.o.runtimepath = vim.o.runtimepath .. ",/Users/edlingao/.local/share/nvim/site/pack/packer/start/ripple/packages/nvim-plugin"
+time([[Runtimepath customization]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\27colorscheme catppuccin\bcmd\bvim\0", "config", "catppuccin")
+try_loadstring("\27LJ\2\nË\1\0\0\5\0\v\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\2B\0\2\0016\0\b\0009\0\t\0'\2\n\0B\0\2\1K\0\1\0\27colorscheme catppuccin\bcmd\bvim\17integrations\1\0\1\17integrations\0\15native_lsp\1\0\1\fenabled\2\1\0\2\15treesitter\2\15native_lsp\0\nsetup\15catppuccin\frequire\0", "config", "catppuccin")
 time([[Config for catppuccin]], false)
+-- Config for: ripple
+time([[Config for ripple]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vripple\frequire\0", "config", "ripple")
+time([[Config for ripple]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
