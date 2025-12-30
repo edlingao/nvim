@@ -9,6 +9,11 @@ vim.keymap.set("n", "<leader>pv", ":ex<cr>")
 -- vim.keymap.set("n", "C-h", ":ex<cr>")
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>")
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 vim.api.nvim_create_user_command("TemplFmt", function()
     vim.cmd("silent !templ fmt " .. vim.fn.expand("%:p"))
 end, {})
